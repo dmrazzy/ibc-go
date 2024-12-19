@@ -6,11 +6,11 @@ import (
 	"context"
 	"testing"
 
-	test "github.com/strangelove-ventures/interchaintest/v8/testutil"
+	test "github.com/strangelove-ventures/interchaintest/v9/testutil"
 	testifysuite "github.com/stretchr/testify/suite"
 
-	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	paramsproposaltypes "github.com/cosmos/cosmos-sdk/x/params/types/proposal"
+	govtypes "cosmossdk.io/x/gov/types"
+	paramsproposaltypes "cosmossdk.io/x/params/types/proposal"
 
 	"github.com/cosmos/ibc-go/e2e/testsuite"
 	"github.com/cosmos/ibc-go/e2e/testsuite/query"
@@ -19,6 +19,7 @@ import (
 	ibctesting "github.com/cosmos/ibc-go/v9/testing"
 )
 
+// compatibility:from_version: v7.2.0
 func TestTransferTestSuiteSendReceive(t *testing.T) {
 	testifysuite.Run(t, new(TransferTestSuiteSendReceive))
 }
