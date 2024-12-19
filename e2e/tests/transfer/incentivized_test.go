@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/strangelove-ventures/interchaintest/v8/ibc"
-	test "github.com/strangelove-ventures/interchaintest/v8/testutil"
+	"github.com/strangelove-ventures/interchaintest/v9/ibc"
+	test "github.com/strangelove-ventures/interchaintest/v9/testutil"
 	testifysuite "github.com/stretchr/testify/suite"
 
 	sdkmath "cosmossdk.io/math"
@@ -32,6 +32,7 @@ type IncentivizedTransferTestSuite struct {
 	transferTester
 }
 
+// compatibility:from_version: v7.4.0
 func TestIncentivizedTransferTestSuite(t *testing.T) {
 	testifysuite.Run(t, new(IncentivizedTransferTestSuite))
 }

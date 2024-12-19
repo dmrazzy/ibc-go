@@ -8,17 +8,17 @@ import (
 	"time"
 
 	"github.com/cosmos/gogoproto/proto"
-	"github.com/strangelove-ventures/interchaintest/v8"
-	"github.com/strangelove-ventures/interchaintest/v8/ibc"
-	test "github.com/strangelove-ventures/interchaintest/v8/testutil"
+	"github.com/strangelove-ventures/interchaintest/v9"
+	"github.com/strangelove-ventures/interchaintest/v9/ibc"
+	test "github.com/strangelove-ventures/interchaintest/v9/testutil"
 	testifysuite "github.com/stretchr/testify/suite"
 
 	sdkmath "cosmossdk.io/math"
+	banktypes "cosmossdk.io/x/bank/types"
+	govtypes "cosmossdk.io/x/gov/types"
+	paramsproposaltypes "cosmossdk.io/x/params/types/proposal"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	paramsproposaltypes "github.com/cosmos/cosmos-sdk/x/params/types/proposal"
 
 	"github.com/cosmos/ibc-go/e2e/testsuite"
 	"github.com/cosmos/ibc-go/e2e/testsuite/query"
@@ -31,6 +31,7 @@ import (
 	ibctesting "github.com/cosmos/ibc-go/v9/testing"
 )
 
+// compatibility:from_version: v7.4.0
 func TestInterchainAccountsParamsTestSuite(t *testing.T) {
 	testifysuite.Run(t, new(InterchainAccountsParamsTestSuite))
 }
@@ -111,6 +112,7 @@ func (s *InterchainAccountsParamsTestSuite) TestControllerEnabledParam() {
 	})
 }
 
+// compatibility:TestHostEnabledParam:from_versions: v9.0.0,v8.4.0,v7.5.0
 func (s *InterchainAccountsParamsTestSuite) TestHostEnabledParam() {
 	t := s.T()
 	ctx := context.TODO()

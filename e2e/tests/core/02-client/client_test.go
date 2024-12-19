@@ -11,21 +11,21 @@ import (
 	"testing"
 	"time"
 
-	"github.com/strangelove-ventures/interchaintest/v8/ibc"
-	test "github.com/strangelove-ventures/interchaintest/v8/testutil"
+	"github.com/strangelove-ventures/interchaintest/v9/ibc"
+	test "github.com/strangelove-ventures/interchaintest/v9/testutil"
 	testifysuite "github.com/stretchr/testify/suite"
 
+	govtypes "cosmossdk.io/x/gov/types"
+	paramsproposaltypes "cosmossdk.io/x/params/types/proposal"
 	upgradetypes "cosmossdk.io/x/upgrade/types"
 
 	"github.com/cosmos/cosmos-sdk/client/grpc/cmtservice"
-	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	paramsproposaltypes "github.com/cosmos/cosmos-sdk/x/params/types/proposal"
 
+	cmtproto "github.com/cometbft/cometbft/api/cometbft/types/v1"
+	cmtprotoversion "github.com/cometbft/cometbft/api/cometbft/version/v1"
 	"github.com/cometbft/cometbft/crypto/tmhash"
 	cmtjson "github.com/cometbft/cometbft/libs/json"
 	"github.com/cometbft/cometbft/privval"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	cmtprotoversion "github.com/cometbft/cometbft/proto/tendermint/version"
 	cmttypes "github.com/cometbft/cometbft/types"
 	cmtversion "github.com/cometbft/cometbft/version"
 
@@ -44,6 +44,7 @@ const (
 	invalidHashValue = "invalid_hash"
 )
 
+// compatibility:from_version: v7.4.0
 func TestClientTestSuite(t *testing.T) {
 	testifysuite.Run(t, new(ClientTestSuite))
 }
@@ -61,6 +62,7 @@ func (s *ClientTestSuite) QueryAllowedClients(ctx context.Context, chain ibc.Cha
 }
 
 // TestScheduleIBCUpgrade_Succeeds tests that a governance proposal to schedule an IBC software upgrade is successful.
+// compatibility:TestScheduleIBCUpgrade_Succeeds:from_versions: v8.4.0,v8.5.0,v9.0.0
 func (s *ClientTestSuite) TestScheduleIBCUpgrade_Succeeds() {
 	t := s.T()
 	ctx := context.TODO()
@@ -132,6 +134,7 @@ func (s *ClientTestSuite) TestScheduleIBCUpgrade_Succeeds() {
 }
 
 // TestRecoverClient_Succeeds tests that a governance proposal to recover a client using a MsgRecoverClient is successful.
+// compatibility:TestRecoverClient_Succeeds:from_versions: v8.4.0,v8.5.0,v9.0.0
 func (s *ClientTestSuite) TestRecoverClient_Succeeds() {
 	t := s.T()
 	ctx := context.TODO()

@@ -8,10 +8,10 @@ import (
 
 	dockerclient "github.com/docker/docker/client"
 	"github.com/pelletier/go-toml"
-	"github.com/strangelove-ventures/interchaintest/v8"
-	"github.com/strangelove-ventures/interchaintest/v8/ibc"
-	"github.com/strangelove-ventures/interchaintest/v8/relayer"
-	"github.com/strangelove-ventures/interchaintest/v8/relayer/hermes"
+	"github.com/strangelove-ventures/interchaintest/v9"
+	"github.com/strangelove-ventures/interchaintest/v9/ibc"
+	"github.com/strangelove-ventures/interchaintest/v9/relayer"
+	"github.com/strangelove-ventures/interchaintest/v9/relayer/hermes"
 	"go.uber.org/zap"
 )
 
@@ -189,7 +189,7 @@ func (r Map) AddRelayer(testName string, ibcrelayer ibc.Wallet) {
 	r[testName][ibcrelayer] = true
 }
 
-// containsRelayer returns true if the given relayer is in the relayer set for the given test name.
+// ContainsRelayer returns true if the given relayer is in the relayer set for the given test name.
 func (r Map) ContainsRelayer(testName string, wallet ibc.Wallet) bool {
 	if relayerSet, ok := r[testName]; ok {
 		return relayerSet[wallet]

@@ -8,15 +8,15 @@ import (
 	"time"
 
 	"github.com/cosmos/gogoproto/proto"
-	interchaintest "github.com/strangelove-ventures/interchaintest/v8"
-	"github.com/strangelove-ventures/interchaintest/v8/ibc"
-	test "github.com/strangelove-ventures/interchaintest/v8/testutil"
+	interchaintest "github.com/strangelove-ventures/interchaintest/v9"
+	"github.com/strangelove-ventures/interchaintest/v9/ibc"
+	test "github.com/strangelove-ventures/interchaintest/v9/testutil"
 	testifysuite "github.com/stretchr/testify/suite"
 
 	sdkmath "cosmossdk.io/math"
+	banktypes "cosmossdk.io/x/bank/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
 	"github.com/cosmos/ibc-go/e2e/testsuite"
 	"github.com/cosmos/ibc-go/e2e/testsuite/query"
@@ -28,6 +28,7 @@ import (
 	ibctesting "github.com/cosmos/ibc-go/v9/testing"
 )
 
+// compatibility:from_version: v7.4.0
 func TestIncentivizedInterchainAccountsTestSuite(t *testing.T) {
 	testifysuite.Run(t, new(IncentivizedInterchainAccountsTestSuite))
 }
