@@ -7,8 +7,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/strangelove-ventures/interchaintest/v8/ibc"
-	test "github.com/strangelove-ventures/interchaintest/v8/testutil"
+	"github.com/strangelove-ventures/interchaintest/v9/ibc"
+	test "github.com/strangelove-ventures/interchaintest/v9/testutil"
 	testifysuite "github.com/stretchr/testify/suite"
 
 	sdkmath "cosmossdk.io/math"
@@ -23,6 +23,7 @@ import (
 	channeltypes "github.com/cosmos/ibc-go/v9/modules/core/04-channel/types"
 )
 
+// compatibility:from_version: v8.4.0
 func TestTransferChannelUpgradesTestSuite(t *testing.T) {
 	testifysuite.Run(t, new(TransferChannelUpgradesTestSuite))
 }
@@ -101,7 +102,7 @@ func (s *TransferChannelUpgradesTestSuite) TestChannelUpgrade_WithFeeMiddleware_
 		s.StartRelayer(relayer, testName)
 	})
 
-	s.Require().NoError(test.WaitForBlocks(ctx, 10, chainA, chainB), "failed to wait for blocks")
+	s.Require().NoError(test.WaitForBlocks(ctx, 20, chainA, chainB), "failed to wait for blocks")
 
 	t.Run("packets are relayed between chain A and chain B", func(t *testing.T) {
 		// packet from chain A to chain B
@@ -413,6 +414,7 @@ func (s *TransferChannelUpgradesTestSuite) TestChannelUpgrade_WithFeeMiddleware_
 }
 
 // TestChannelDowngrade_WithICS20v1_Succeeds tests downgrading a transfer channel from ICS20 v2 to ICS20 v1.
+// compatibility:TestChannelDowngrade_WithICS20v1_Succeeds:from_versions: v9.0.0
 func (s *TransferChannelUpgradesTestSuite) TestChannelDowngrade_WithICS20v1_Succeeds() {
 	t := s.T()
 	ctx := context.TODO()

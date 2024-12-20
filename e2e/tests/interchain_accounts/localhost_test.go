@@ -8,15 +8,15 @@ import (
 	"time"
 
 	"github.com/cosmos/gogoproto/proto"
-	"github.com/strangelove-ventures/interchaintest/v8"
-	"github.com/strangelove-ventures/interchaintest/v8/ibc"
-	test "github.com/strangelove-ventures/interchaintest/v8/testutil"
+	"github.com/strangelove-ventures/interchaintest/v9"
+	"github.com/strangelove-ventures/interchaintest/v9/ibc"
+	test "github.com/strangelove-ventures/interchaintest/v9/testutil"
 	testifysuite "github.com/stretchr/testify/suite"
 
 	sdkmath "cosmossdk.io/math"
+	banktypes "cosmossdk.io/x/bank/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
 	"github.com/cosmos/ibc-go/e2e/testsuite"
 	"github.com/cosmos/ibc-go/e2e/testsuite/query"
@@ -34,10 +34,12 @@ func TestInterchainAccountsLocalhostTestSuite(t *testing.T) {
 	testifysuite.Run(t, new(LocalhostInterchainAccountsTestSuite))
 }
 
+// compatibility:from_version: v7.4.0
 type LocalhostInterchainAccountsTestSuite struct {
 	testsuite.E2ETestSuite
 }
 
+// compatibility:TestInterchainAccounts_Localhost:from_versions: v7.4.0,v7.5.0,v7.6.0,v7.7.0,v7.8.0,v8.4.0,v8.5.0,v9.0.0
 func (s *LocalhostInterchainAccountsTestSuite) TestInterchainAccounts_Localhost() {
 	t := s.T()
 	ctx := context.TODO()
